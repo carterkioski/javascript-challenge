@@ -1,17 +1,35 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-tableData.forEach((item) => {
-    table = d3.select('table')
-    tr = table.append('tr')
-    console.log(item.city)
-    tr.append('td').text(item.datetime)
-    tr.append('td').text(item.city)
-    tr.append('td').text(item.state)
-    tr.append('td').text(item.country)
-    tr.append('td').text(item.shape)
-    tr.append('td').text(item.durationMinutes)
-    tr.append('td').text(item.comments)
+//initally loads all data
+createTable(tableData)
+//selects the button
+button = d3.select('#filter-btn')
+button.on('click', handleClick)
+function handleClick(){
+    //once button is clicked it checks calue of input
+    inputDate = d3.select('#datetime').property("value")
+    if (inputDate){
+        filteredTableData = tableData.filter((item) => item.datetime === inputDate )
+        createTable(filteredTableData)
+    }
+    else {
+        createTable(tableData)
+    }
 }
-)
+
+//Code for adding in rows
+function createTable(ufoData){
+    d3.select('.ufo-data').html("")
+    ufoData.forEach((item) => {
+        table = d3.select('.ufo-data')
+        tr = table.append('tr')
+        tr.append('td').text(item.datetime)
+        tr.append('td').text(item.city)
+        tr.append('td').text(item.state)
+        tr.append('td').text(item.country)
+        tr.append('td').text(item.shape)
+        tr.append('td').text(item.durationMinutes)
+        tr.append('td').text(item.comments)
+    })
+}
