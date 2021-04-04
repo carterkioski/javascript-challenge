@@ -36,8 +36,17 @@
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                        <select id="filter-category">
+                          <option value="datetime">Date</option>
+                          <option value="city">City</option>
+                          <option value="state">State</option>
+                          <option value="country">Country</option>
+                          <option value="shape">Shape</option>
+                        </select>
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="date">Enter the value to filter for</label>
+                        <input class="form-control" id="filter-value" type="text" placeholder="Enter Value">
                       </li>
                     </ul>
                   </div>
@@ -61,7 +70,7 @@
                   <th class="table-head">Comments</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody class="ufo-data"></tbody>
             </table>
           </div>
         </div>
